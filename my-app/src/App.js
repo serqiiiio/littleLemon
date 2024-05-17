@@ -1,25 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Navbar from "./components/Nav"
+import Footer from "./components/Footer"
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return(
+        <div>
+            <meta name="Little Lemon" content="A Bolivian restaurant"/>
+            <meta name="og:title" content="Little Lemon"/>
+            <meta name="og:description" content="A place to eat top Bolivian Food"/>
+            <Navbar/>
+            <Footer/>
+        </div>
+
+    )
 }
 
 export default App;
