@@ -1,4 +1,12 @@
-export const HeroSection = () => {
+import { Routes, Route, useNavigate } from "react-router-dom";
+import ReservationPage from "../reservationPage/ReservationPage";
+const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/reservation");
+  };
+
   return (
     <div className="hero-section">
       <div className="left-hero-section">
@@ -8,7 +16,7 @@ export const HeroSection = () => {
           We are a family owned Bolivian restaurant, focused on traditional
           recipes served with a modern twist
         </p>
-        <button>Reserve Table</button>
+        <button onClick={handleRedirect}>Reserve Table</button>
       </div>
       <div className="hero-section-img">
         <img src="./images/restauranfood.jpg" alt="hero section food"></img>
@@ -17,7 +25,7 @@ export const HeroSection = () => {
   );
 };
 
-export const HighLights = () => {
+const HighLights = () => {
   return (
     <div className="highlights">
       <div className="highlights-header">
@@ -82,3 +90,18 @@ export const HighLights = () => {
     </div>
   );
 };
+
+const Main = () => {
+  return (
+    <>
+      <HeroSection />
+      <Routes>
+        <Route path="/about" element={<Main />} />
+        <Route path="/reservation" element={<ReservationPage />} />
+      </Routes>
+      <HighLights />
+    </>
+  );
+};
+
+export default Main;

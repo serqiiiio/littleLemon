@@ -1,7 +1,10 @@
 import "./App.css";
 import Navbar from "./components/Nav";
 import Footer from "./components/Footer";
-import { HeroSection, HighLights } from "./components/Main";
+import { Routes, Route } from "react-router-dom";
+import Main from "./components/Main";
+import ReservationPage from "./reservationPage/ReservationPage";
+
 function App() {
   return (
     <div>
@@ -9,8 +12,14 @@ function App() {
       <meta name="og:title" content="Little Lemon" />
       <meta name="og:description" content="A place to eat top Bolivian Food" />
       <Navbar />
-      <HeroSection />
-      <HighLights />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/about" />
+        <Route path="/menu" />
+        <Route path="/reservation" element={<ReservationPage />} />
+        <Route path="/order" />
+        <Route path="/login" />
+      </Routes>
       <Footer />
     </div>
   );

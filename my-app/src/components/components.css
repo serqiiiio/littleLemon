@@ -204,3 +204,91 @@ div.description p {
   margin-left: 25px;
   margin-right: 25px;
 }
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60em, 1fr));
+  justify-content: center;
+  align-items: center;
+  background-color: #495e57;
+}
+.form-container h3 {
+  text-align: center;
+  color: azure;
+  font-family: "Karla", sans-serif;
+  font-size: xx-large;
+  margin-bottom: 80px;
+}
+.form-content {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  justify-self: center;
+}
+
+.second-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  margin-bottom: 7px;
+}
+.error {
+  color: red;
+  grid-column: span 2;
+  font-size: 0.75em;
+  margin-left: 5px;
+}
+
+.second-group label {
+  margin: 5px;
+}
+.second-group input {
+  margin: 7px;
+}
+
+.form-group label {
+  margin: 5px;
+  display: block;
+}
+
+.form-group select {
+  width: 395px;
+  margin-bottom: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+}
+.buttons button {
+  width: 180px;
+  height: 40px;
+  border-radius: 15px;
+  color: black;
+  background-color: #f4ce14;
+  border: none;
+  font-family: "Karla";
+  font-weight: 800;
+  font-size: 1em;
+  margin-top: 20px;
+  justify-self: center;
+}
+
+.instructions {
+  height: 60px;
+  width: 180px;
+  margin-left: 7px;
+}
+
+.form-container h1 {
+  text-align: center;
+  color: #f4ce14;
+  font-size: 8em;
+  margin: 20px;
+}
+
+button:active {
+  background-color: #cc9900; /* Active (click) background color */
+  transform: scale(0.95); /* Slightly reduce size on click */
+}
