@@ -292,3 +292,67 @@ button:active {
   background-color: #cc9900; /* Active (click) background color */
   transform: scale(0.95); /* Slightly reduce size on click */
 }
+
+select#ocasion {
+  width: 185px;
+  height: 25px;
+  margin-left: 7px;
+}
+
+select#time {
+  width: 185px;
+  height: 25px;
+  margin-left: 7px;
+}
+
+.confirmed-data {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+}
+.confirmed-data p {
+  text-align: left;
+  color: azure;
+}
+.confirmed-data .res {
+  font-weight: bold;
+}
+
+.confirmed-booking {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60em, 1fr));
+  justify-content: center;
+  align-items: center;
+  background-color: #495e57;
+}
+
+.confirmed-booking h1 {
+  text-align: center;
+  color: #f4ce14;
+  font-size: 8em;
+  margin: 20px;
+}
+
+.confirmed-booking h3 {
+  text-align: center;
+  color: azure;
+  font-family: "Karla", sans-serif;
+  font-size: xx-large;
+}
+
+.confirmed-booking h2 {
+  text-align: center;
+  color: azure;
+  font-family: "Karla", sans-serif;
+  font-size: xx-large;
+}
+
+.confirmed-booking .buttons {
+  width: 500px;
+  justify-self: center;
+  margin-bottom: 20px;
+}

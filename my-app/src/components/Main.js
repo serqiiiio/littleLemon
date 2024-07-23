@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import ReservationPage from "../reservationPage/ReservationPage";
+import Form from "../reservationPage/form";
 const HeroSection = () => {
   const navigate = useNavigate();
 
@@ -97,7 +97,7 @@ const Main = () => {
       <HeroSection />
       <Routes>
         <Route path="/about" element={<Main />} />
-        <Route path="/reservation" element={<ReservationPage />} />
+        <Route path="/reservation" element={<Form />} />
       </Routes>
       <HighLights />
     </>

@@ -1,16 +1,17 @@
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useReducer } from "react";
 
 const initialValues = {
   select_location: "",
   select_date: "",
   select_time: "",
-  number_of_guests: "",
+  number_of_guests: "1",
   name: "",
   email: "",
   phone_number: "",
   special_ins: "",
+  ocasion: "",
 };
 
 const validationSchema = Yup.object({
@@ -30,20 +31,30 @@ const validationSchema = Yup.object({
     .matches(/^\d+$/, "Phone number must be digits only")
     .required("Phone number is required"),
   special_ins: Yup.string().optional(),
+  ocasion: Yup.string()
+    .required("Occassion is required")
+    .oneOf(["Birthday", "Anniversary"], "Invalid occasion"),
 });
 
-const Form = () => {
+const Form = ({ updateTimes, initialState, submit }) => {
+  const options = initialState.map((time) => (
+    <option key={time}>{time}</option>
+  ));
+  const [state, dispatch] = useReducer(updateTimes, initialState);
+  const handleTimeChange = (event) => {
+    const newSelectedTime = event.target.value;
+    dispatch({ type: "UPDATE_TIMES", selectedTime: newSelectedTime });
+    formik.setFieldValue("select_time", newSelectedTime);
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
       console.log(values);
+      submit(values);
     },
   });
-  const navigate = useNavigate();
-  const handleRedirect = () => {
-    navigate("/");
-  };
 
   return (
     <div className="form-container">
@@ -83,16 +94,34 @@ const Form = () => {
             ) : null}
 
             <label htmlFor="time">Select Time</label>
-            <input
+            <select
               id="time"
               name="select_time"
-              value={formik.values.select_time}
-              onChange={formik.handleChange}
+              onChange={handleTimeChange}
               onBlur={formik.handleBlur}
-              type="time"
-            />
+              value={state.selectedTime}
+            >
+              <option value="">--Please choose an option--</option>
+              {options}
+            </select>
             {formik.touched.select_time && formik.errors.select_time ? (
               <div className="error">{formik.errors.select_time}</div>
+            ) : null}
+
+            <label htmlFor="time">Occasion</label>
+            <select
+              id="ocasion"
+              name="ocasion"
+              value={formik.values.ocasion}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            >
+              <option value="">--Please choose an option--</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Anniversary">Anniversary</option>
+            </select>
+            {formik.touched.ocasion && formik.errors.ocasion ? (
+              <div className="error">{formik.errors.ocasion}</div>
             ) : null}
 
             <label htmlFor="guests">Number Of Guests</label>
@@ -103,6 +132,9 @@ const Form = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               type="number"
+              placeholder="1"
+              min="1"
+              max="10"
             />
             {formik.touched.number_of_guests &&
             formik.errors.number_of_guests ? (
@@ -161,7 +193,7 @@ const Form = () => {
           </div>
           <div className="buttons">
             <button type="submit">Reserve Table</button>
-            <button onClick={handleRedirect}>Cancel </button>
+            <button>Cancel </button>
           </div>
         </form>
       </div>
